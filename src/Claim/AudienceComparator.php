@@ -13,7 +13,7 @@ class AudienceComparator extends Basic implements Claim, Validatable
     public function validate(ValidationData $data)
     {
         if (is_string($this->getValue())) {
-            return $this->getValue() === $data->get($this->getName());
+            return array_search($this->getValue(), $data->get($this->getName())) !== false;
         } elseif (is_array($this->getValue())) {
             foreach($data->get($this->getName()) as $aud) {
                 if (array_search($aud, $this->getValue()) !== false) {
