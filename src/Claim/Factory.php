@@ -39,7 +39,7 @@ class Factory
                 'nbf' => [$this, 'createLesserOrEqualsTo'],
                 'exp' => [$this, 'createGreaterOrEqualsTo'],
                 'iss' => [$this, 'createEqualsTo'],
-                'aud' => [$this, 'createEqualsTo'],
+                'aud' => [$this, 'audienceComparator'],
                 'sub' => [$this, 'createEqualsTo'],
                 'jti' => [$this, 'createEqualsTo']
             ],
@@ -101,6 +101,17 @@ class Factory
     private function createEqualsTo($name, $value)
     {
         return new EqualsTo($name, $value);
+    }
+
+    /**
+     * @param string $name
+     * @param mixed $value
+     *
+     * @return AudienceComparator
+     */
+    private function audienceComparator($name, $value)
+    {
+        return new AudienceComparator($name, $value);
     }
 
     /**

@@ -76,7 +76,7 @@ class ValidationData
      */
     public function setAudience($audience)
     {
-        $this->items['aud'] = (string) $audience;
+        $this->items['aud'] = [(string) $audience];
     }
 
     /**

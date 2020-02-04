@@ -29,7 +29,7 @@ class FactoryTest extends \PHPUnit\Framework\TestCase
             'nbf' => [$factory, 'createLesserOrEqualsTo'],
             'exp' => [$factory, 'createGreaterOrEqualsTo'],
             'iss' => [$factory, 'createEqualsTo'],
-            'aud' => [$factory, 'createEqualsTo'],
+            'aud' => [$factory, 'audienceComparator'],
             'sub' => [$factory, 'createEqualsTo'],
             'jti' => [$factory, 'createEqualsTo'],
             'test' => $callback
@@ -131,7 +131,7 @@ class FactoryTest extends \PHPUnit\Framework\TestCase
     {
         $claim = new Factory();
 
-        $this->assertInstanceOf(EqualsTo::class, $claim->create('aud', 1));
+        $this->assertInstanceOf(AudienceComparator::class, $claim->create('aud', 1));
     }
 
     /**
